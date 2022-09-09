@@ -20,22 +20,37 @@ class Journal {
     return Object.values(this.entries).join("\n");
   }
 
-  save(filename) {
-    fs.writeFileSync(filename, this.toString());
-  }
+  // save(filename) {
+  //   fs.writeFileSync(filename, this.toString());
+  // }
 
-  load(filename) {
-    //
-  }
+  // load(filename) {
+  //   //
+  // }
 
-  loadFromUrl(url) {
-    //
-  }
+  // loadFromUrl(url) {
+  //   //
+  // }
 }
 Journal.count = 0;
+
+class PersistenceManager {
+  //Eg.
+  preprocess(j) {
+    //
+  }
+
+  saveToFile(journal, filename) {
+    fs.writeFileSync(filename, journal.toString());
+  }
+}
 
 let j = new Journal();
 j.addEntry("I cried today");
 j.addEntry("I ate a bug");
-
 console.log(j.toString());
+
+let p = new PersistenceManager();
+let filename =
+  "~/Projects/study_folder/design-patterns-js/SOLID/Single Responsability";
+p.saveToFile(j, filename);
