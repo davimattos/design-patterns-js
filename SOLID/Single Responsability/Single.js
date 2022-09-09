@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 class Journal {
   constructor() {
     this.entries = {};
@@ -16,6 +18,18 @@ class Journal {
 
   toString() {
     return Object.values(this.entries).join("\n");
+  }
+
+  save(filename) {
+    fs.writeFileSync(filename, this.toString());
+  }
+
+  load(filename) {
+    //
+  }
+
+  loadFromUrl(url) {
+    //
   }
 }
 Journal.count = 0;
